@@ -1,4 +1,4 @@
-Taking inspiration from the many other "TwitchPlays" style programmes, including that featured by Wituz https://www.wituz.com/make-your-own-twitch-plays-stream.html this software has been specifically created to be an easy to use for the gaming community.
+Taking inspiration from the many other "TwitchPlays" style programmes, this software has been specifically created to be an easy to use for the gaming community.
 
 
 ~~ How it works
