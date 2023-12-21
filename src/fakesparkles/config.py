@@ -22,7 +22,7 @@ DEFAULT_SUPERUSER_COMMAND_PREFIX = "sudo"
 DEFAULT_BOTS = {"streamelements", "nightbot", "streamlabs"}
 
 BLOCKLIST = {}
-"""set()
+set()
 if not NO_BLOCKLIST:
     import urllib.request as urllib_request
 
@@ -31,7 +31,7 @@ if not NO_BLOCKLIST:
 
         del urllib_request
     del _blocklist
-"""
+
 
 def check_blocklist(channel: str | set[str], *, abort: bool = True, silent: bool = False) -> set[str] | NoReturn:
     """Return any channels/users in the blocklist"""
@@ -49,8 +49,8 @@ def check_blocklist(channel: str | set[str], *, abort: bool = True, silent: bool
 
 @dataclasses.dataclass(slots=True)
 class ActionConfig:
-    """The global config for actions Twitch_Chatplay"""
-    vgame: gameactions.ActionConfig
+    """The global config for actions Twitch Chatplay"""
+    phasmo: gameactions.ActionConfig
     twitch: twitchactions.TwitchActionConfig
 
 
@@ -187,7 +187,7 @@ class Config:
         superuser_prefix = tomldata.get("superuser_prefix", DEFAULT_SUPERUSER_COMMAND_PREFIX) if tomldata else DEFAULT_SUPERUSER_COMMAND_PREFIX
         bots = set(tomldata.get("bots", DEFAULT_BOTS)) if tomldata else DEFAULT_BOTS
 
-        return cls({key: ActionConfig(vgame=gta.config[key], twitch=twitch.config[key]) for key in gta.config.keys()},
+        return cls({key: ActionConfig(phasmo=gta.config[key], twitch=twitch.config[key]) for key in gta.config.keys()},
                    version=version,
                    channel=channel,
                    superusers=superusers,
@@ -198,11 +198,11 @@ class Config:
 
     def _make_phasmo_actions(self) -> gameactions.ActionDict:
         """Make the phasmo actions"""
-        return gtaactions.all_actions_dict(lambda: gameactions.Config({key: item.vgame for key, item in self.config.items()}))
+        return gtaactions.all_actions_dict(lambda: gameactions.Config({key: item.phasmo for key, item in self.config.items()}))
 
     def _make_random_phasmo_action(self) -> gtaactions.RandomAction:
         """Make a random phasmo action"""
-        return gtaactions.RandomAction(lambda: gameactions.Config({key: item.vgame for key, item in self.config.items()}))
+        return gtaactions.RandomAction(lambda: gameactions.Config({key: item.phasmo for key, item in self.config.items()}))
 
     def _get_twitch_config_fn(self) -> twitchactions.Config:
         """Get the twitch config"""
@@ -217,7 +217,7 @@ class Config:
         random_action = self._make_random_phasmo_action()
 
         random_config = ActionConfig(
-            vgame=gtaactions.RandomActionConfig(lambda: existingactions),
+            phasmo=gtaactions.RandomActionConfig(lambda: existingactions),
             twitch=twitchactions.TwitchActionConfig(random_action.name, random_chance=10)
         )
 
