@@ -86,7 +86,7 @@ class Callbacks:
 
 def get_key(cfg: config.Config, tag: str) -> str:
     """Get the key (or button) for the action"""
-    hidconfig = cfg.config[tag].vgame.hidconfig
+    hidconfig = cfg.config[tag].phasmo.hidconfig
 
     if isinstance(hidconfig, hidactions.KeyboardActionConfig):
         return hidconfig.key
@@ -113,26 +113,26 @@ def set_command_text(cfg: config.Config, tag: str, command_text: str) -> None:
 
 def get_keybind_text(cfg: config.Config, tag: str) -> str:
     """Get the keybind text for the action"""
-    keybind_text = cfg.config[tag].vgame.hidconfig.key
+    keybind_text = cfg.config[tag].phasmo.hidconfig.key
 
     return keybind_text
 
 
 def set_keybind_text(cfg: config.Config, tag: str, command_text: str) -> None:
     """Set the keybind text for the action"""
-    cfg.config[tag].vgame.hidconfig.key = command_text.strip()
+    cfg.config[tag].phasmo.hidconfig.key = command_text.strip()
 
 
 def get_button_text(cfg: config.Config, tag: str) -> str:
     """Get the button text for the action"""
-    button_text = cfg.config[tag].vgame.hidconfig.button
+    button_text = cfg.config[tag].phasmo.hidconfig.button
 
     return button_text
 
 
 def set_button_text(cfg: config.Config, tag: str, command_text: str) -> None:
     """Set the button text for the action"""
-    cfg.config[tag].vgame.hidconfig.button = command_text.strip()
+    cfg.config[tag].phasmo.hidconfig.button = command_text.strip()
 
 
 def set_enabled_state(tk_obj, tk_var, predicate: Callable[[Any], bool]) -> None:
@@ -142,7 +142,7 @@ def set_enabled_state(tk_obj, tk_var, predicate: Callable[[Any], bool]) -> None:
 
 def get_hid_type_text(cfg: config.Config, tag: str) -> str:
     """Get the HID type text for the action"""
-    hid_type_text = cfg.config[tag].vgame.hidconfig.device.name
+    hid_type_text = cfg.config[tag].phasmo.hidconfig.device.name
 
     return hid_type_text
 
@@ -326,7 +326,7 @@ def make_cooldown_frame(where, cfg: config.Config, selection: tk.StringVar, fram
     return frame, cooldown
 
 
-#def make_random_frame(where, cfg: config.Config, selection: tk.StringVar, frame_width: int) -> tuple[tk.Frame, tk.IntVar]:
+def make_random_frame(where, cfg: config.Config, selection: tk.StringVar, frame_width: int) -> tuple[tk.Frame, tk.IntVar]:
     """Make the random frame"""
     frame = tk.Frame(where, width=frame_width, height=50)
 
@@ -418,7 +418,7 @@ def make_option_frame(optionargs: UpdateArgs, *args) -> tuple[tk.Frame, dict]:
         action_type_frame.pack()
         guivars[name.lower()] = var
 
-    if isinstance(optionargs.cfg.config[optionargs.selection.get()].vgame.hidconfig, hidactions.KeyboardActionConfig):
+    if isinstance(optionargs.cfg.config[optionargs.selection.get()].phasmo.hidconfig, hidactions.KeyboardActionConfig):
         name = "Keyboard"
         keybind_frame, var = runtimeframes.make_labelled_text_frame(name,
                                                                     get_keybind_text(optionargs.cfg, optionargs.selection.get()),
@@ -426,7 +426,7 @@ def make_option_frame(optionargs: UpdateArgs, *args) -> tuple[tk.Frame, dict]:
                                                                     set_keybind_text(optionargs.cfg, optionargs.selection.get(), state))
         keybind_frame.pack()
         guivars[name.lower()] = var
-    elif isinstance(optionargs.cfg.config[optionargs.selection.get()].vgame.hidconfig, hidactions.MouseButtonActionConfig):
+    elif isinstance(optionargs.cfg.config[optionargs.selection.get()].phasmo.hidconfig, hidactions.MouseButtonActionConfig):
         name = "Mouse Button"
         button_frame, var = runtimeframes.make_labelled_text_frame(name,
                                                                    get_button_text(optionargs.cfg, optionargs.selection.get()),
