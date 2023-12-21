@@ -1,0 +1,20 @@
+Testing the commands to display correct keybinds:
+
+forward- w
+backward - s 
+left- a
+right- d
+pickup - e
+drop- g
+crouch- c
+
+look left- mouse moves left
+look right- mouse move right
+look up- mouse move up
+look down- mouse move down
+peek up- mouse move little bit up
+peek down- mouse move little bit down
+peek left- mouse move little bit left
+peek right- mouse move little bit right
+
+**************************************
