@@ -1,13 +1,24 @@
-Taking inspiration from the many other "TwitchPlays" style programmes, this software has been specifically created to be an easy to use for the gaming community.
+# Crowdsourced Gaming on Twitch
+
+Taking inspiration from the many other "TwitchPlays" style programmes, this software application has been specifically created to be an easy to use for the gaming community. This project delves into enhancing the interactive dynamics of Twitch live streams by enabling viewers to actively influence gameplay. Utilizing Python, the project integrates Twitch API functionalities to facilitate real-time interaction between chat participants and gameplay actions. 
 
 
-~~ How it works
+## 🔮 How it works
 
-This project works by talking directly to the operating system *as if* it were a mouse or keyboard plugged into your machine. The twitch username should be updated to your own to connect it and read your channel chat messgaes for input. This code does not modify any game code nor any files on your computer.  It has been tested in Windows.
+This project works by talking directly to the operating system *as if* it were a mouse or keyboard plugged into your machine. The twitch username should be updated to your own to connect it and read your channel chat messgaes for input. Just open up the gui application and setup the keybinds for different controls of the gameplay and let it run with your livestream! You'll enable your live audience to interact with your game using the keybinds you setup to them and increase viewer engagement.
 
-The main use case to date has been for streamers to allow their chat to enjoy a bit of interactive stream time with their favourite streamers during gameplay.
+*Note: This code does not modify any game code nor any files on your computer. It has been tested in Windows.*
 
-~~ Contributing and Thanks
+## 🫧 Installations
+The following python packages need to be installed using pip.
+
+```bash
+pip install config
+pip install pynput
+pip install keyboard
+pip install twitchirc
+```
+## 💟 Contributing and Thanks
 
 
 > - Wituz's "Twitch Plays" tutorial: <http://www.wituz.com/make-your-own-twitch-plays-stream.html>
